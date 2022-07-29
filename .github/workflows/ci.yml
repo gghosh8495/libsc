@@ -80,6 +80,15 @@ jobs:
         name: test_suite_log
         path: ./**/test-suite.log
 
+    - name: Make distcheck
+      shell: bash
+      run: |
+        DIR="check" && mkdir -p "$DIR" && cd "$DIR"
+        ../configure --enable-mpi --enable-debug --disable-shared CFLAGS="-O0 -g -Wall -Wextra -Wno-unused-parameter"
+        make -j check V=0
+        cat ./config/sc_config_autotools.h
+        cat ./config/sc_config.h
+    
   linux-tarball:
     runs-on: ubuntu-latest
     name: Pack tarball on Linux
