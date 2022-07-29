@@ -16,7 +16,7 @@ AM_INIT_AUTOMAKE([parallel-tests subdir-objects])
 AM_SILENT_RULES
 AM_EXTRA_RECURSIVE_TARGETS([justlibs])
 PKG_INSTALLDIR
-SC_VERSION([SC])
+SC_VERSION([config/sc_config.h])
 
 echo "o---------------------------------------"
 echo "| Checking options"
