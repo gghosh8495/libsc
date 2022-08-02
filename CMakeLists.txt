@@ -64,7 +64,7 @@ RUNTIME DESTINATION bin
 )
 
 add_subdirectory(src)
-
+add_subdirectory(example)
 if(BUILD_TESTING)
   add_subdirectory(test)
 endif(BUILD_TESTING)
