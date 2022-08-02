@@ -36,12 +36,6 @@ check_symbol_exists(SC_HAVE_UNISTD_H ${cfg_h} SC_HAVE_UNISTD_H)
 check_symbol_exists(SC_HAVE_GETOPT_H ${cfg_h} SC_HAVE_GETOPT_H)
 check_symbol_exists(SC_ENABLE_V4L2 ${cfg_h} SC_ENABLE_V4L2)
 
-target_link_libraries(SC::SC INTERFACE
-$<$<BOOL:${MPI_C_FOUND}>:MPI::MPI_C>
-$<$<BOOL:${ZLIB_FOUND}>:ZLIB::ZLIB>
-$<$<BOOL:${SC_NEED_M}>:m>
-)
-
 # --- build examples
 
 function(test_sc_example name files)
