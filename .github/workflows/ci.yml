@@ -84,10 +84,9 @@ jobs:
       if: failure()
       uses: actions/upload-artifact@v2
       with:
-        name: configure log
+        name: configure_log
         path: |
           ./**/config.log
-          ./**/test-suite.log
 
   linux-tarball:
     runs-on: ubuntu-latest
@@ -128,16 +127,11 @@ jobs:
         name: libsc_tarball
         path: ./libsc-*.tar.gz
 
-    - name: Upload config.log on configure script failure
-      if: ${{ failure() }}
+    - name: Upload log files upon failure
+      if: failure()
       uses: actions/upload-artifact@v2
       with:
-        name: configure log
-        path: ./tarball/config.log
-
-    - name: Upload test-suite.log on test failure
-      if: ${{ failure() }}
-      uses: actions/upload-artifact@v2
-      with:
-        name: test-suite log
-        path: ./tarball/test-suite.log
+        name: build_logs
+        path: |
+            ./tarball/config.log
+            ./tarball/test-suite.log
