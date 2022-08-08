@@ -77,14 +77,14 @@ jobs:
       if: always()
       uses: actions/upload-artifact@v2
       with:
-        name: test_suite_log
+        name: test_suite_log_linux_multi
         path: ./**/test-suite.log
 
     - name: Upload config.log on configure script failure
       if: failure()
       uses: actions/upload-artifact@v2
       with:
-        name: configure_log
+        name: configure_log_linux_multi
         path: |
           ./**/config.log
 
@@ -131,7 +131,7 @@ jobs:
       if: failure()
       uses: actions/upload-artifact@v2
       with:
-        name: build_logs
+        name: build_logs_linux_tarball
         path: |
             ./tarball/config.log
             ./tarball/test-suite.log
