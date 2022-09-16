@@ -155,9 +155,8 @@ AC_DEFUN([SC_CHECK_ZLIB],
    [[
 int ii, size;
 uLong res;
-uint64_t *gather;
+uint64_t gather[2];
 size = 2;
-gather = (uint64_t*)calloc(2*size, uint64_t);
 for(ii = 0; ii < size; ++ii)
 {
   res = adler32_combine(res, (uLong) gather[2 * ii + 0], (z_off_t) gather[2 * ii + 1]);
@@ -175,7 +174,6 @@ printf("%ld\n", res);
   $1_HAVE_$2=yes
   fi
 ])
-
 dnl SC_CHECK_LIB(LIBRARY LIST, FUNCTION, TOKEN, PREFIX)
 dnl Check for FUNCTION first as is, then in each of the libraries.
 dnl Set shell variable PREFIX_HAVE_TOKEN to nonempty if found.
