@@ -160,13 +160,7 @@ uint64_t gather[2];
 size = 2;
 for(ii = 0; ii < size; ++ii)
 {
-#ifdef __cplusplus
-extern "C" {
-#endif
   res = adler32_combine(res, (uLong) gather[2 * ii + 0], (z_off_t) gather[2 * ii + 1]);
-#ifdef __cplusplus
-}
-#endif
 }
 printf("%ld\n", res);
    ]])],
