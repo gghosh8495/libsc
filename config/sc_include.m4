@@ -171,7 +171,7 @@ printf("%ld\n", res);
   AM_CONDITIONAL([$1_HAVE_$2], [test "x$ac_cv_search_$2" != xno])
   $1_HAVE_$2=
   if test "x$ac_cv_search_$2" != xno ; then
-  AC_DEFINE([HAVE_$2], [1], [Have we found function $2.])
+dnl  AC_DEFINE([HAVE_$2], [1], [Have we found function $2.])
   $1_HAVE_$2=yes
   fi
 ])
