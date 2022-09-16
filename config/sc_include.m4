@@ -168,8 +168,8 @@ printf("%ld\n", res);
     AC_MSG_RESULT([yes])],
    [AC_MSG_RESULT([no])])
    ])
-  AM_CONDITIONAL([$1_HAVE_$2], [test "x$ac_cv_search_$2" != xno])
-  $1_HAVE_$2=
+dnl  AM_CONDITIONAL([$1_HAVE_$2], [test "x$ac_cv_search_$2" != xno])
+  $1_HAVE_$2=no
   if test "x$ac_cv_search_$2" != xno ; then
 dnl  AC_DEFINE([HAVE_$2], [1], [Have we found function $2.])
   $1_HAVE_$2=yes
