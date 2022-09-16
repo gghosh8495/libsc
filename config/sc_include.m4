@@ -156,7 +156,7 @@ AC_DEFUN([SC_CHECK_ZLIB],
    [[
 int ii, size;
 uLong res;
-uint64_t gather[2];
+uint64_t gather[4];
 size = 2;
 for(ii = 0; ii < size; ++ii)
 {
