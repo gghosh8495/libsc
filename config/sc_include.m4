@@ -345,8 +345,8 @@ dnl
 AC_DEFUN([SC_CHECK_LIBRARIES],
 [
 SC_CHECK_FABS([$1])
-SC_CHECK_ZLIB([$1],[ZLIB])
-dnl SC_CHECK_LIB([z], [adler32_combine], [ZLIB], [$1])
+dnl SC_CHECK_ZLIB([$1],[ZLIB])
+SC_CHECK_LIB([z], [adler32_combine], [ZLIB], [$1])
 dnl SC_CHECK_LIB([lua53 lua5.3 lua52 lua5.2 lua51 lua5.1 lua5 lua],
 dnl              [lua_createtable], [LUA], [$1])
 dnl SC_CHECK_BLAS_LAPACK([$1])
