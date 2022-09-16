@@ -151,6 +151,7 @@ AC_DEFUN([SC_CHECK_ZLIB],
 #include <zlib.h>
 #include <stdint.h>
 #include <stdlib.h>
+#include <stdio.h>
    ]],
    [[
 int ii, size;
