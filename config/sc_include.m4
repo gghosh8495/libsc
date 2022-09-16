@@ -137,6 +137,45 @@ printf("%f\n", fres);
    ])
 ])
 
+dnl SC_CHECK_ZLIB(PREFIX)
+dnl Check whether adler32_combine is found in libz, do a link test if not found.
+dnl The PREFIX argument is currently unused but should be supplied.
+dnl
+AC_DEFUN([SC_CHECK_ZLIB],
+[
+  AC_SEARCH_LIBS([adler32_combine], [z],,
+  [
+   AC_MSG_CHECKING([whether a adler32_combine link test works])
+   AC_LINK_IFELSE([AC_LANG_PROGRAM(
+   [[
+#include <zlib.h>
+#include <stdint.h>
+#include <stdlib.h>
+   ]],
+   [[
+int ii, size;
+uLong res;
+uint64_t *gather;
+size = 2;
+gather = (uint64_t*)calloc(2*size, uint64_t);
+for(ii = 0; ii < size; ++ii)
+{
+  res = adler32_combine(res, (uLong) gather[2 * ii + 0], (z_off_t) gather[2 * ii + 1]);
+}
+printf("%ld\n", res);
+   ]])],
+   [AC_DEFINE([HAVE_ZLIB], [1], [Define to 1 if adler32_combine links successfully])
+    AC_MSG_RESULT([yes])],
+   [AC_MSG_RESULT([no])])
+   ])
+  AM_CONDITIONAL([$1_HAVE_$2], [test "x$ac_cv_search_$2" != xno])
+  $1_HAVE_$2=
+  if test "x$ac_cv_search_$2" != xno ; then
+  AC_DEFINE([HAVE_$2], [1], [Have we found function $2.])
+  $1_HAVE_$2=yes
+  fi
+])
+
 dnl SC_CHECK_LIB(LIBRARY LIST, FUNCTION, TOKEN, PREFIX)
 dnl Check for FUNCTION first as is, then in each of the libraries.
 dnl Set shell variable PREFIX_HAVE_TOKEN to nonempty if found.
@@ -307,7 +346,8 @@ dnl
 AC_DEFUN([SC_CHECK_LIBRARIES],
 [
 SC_CHECK_FABS([$1])
-SC_CHECK_LIB([z], [adler32_combine], [ZLIB], [$1])
+SC_CHECK_ZLIB([$1],[ZLIB])
+dnl SC_CHECK_LIB([z], [adler32_combine], [ZLIB], [$1])
 dnl SC_CHECK_LIB([lua53 lua5.3 lua52 lua5.2 lua51 lua5.1 lua5 lua],
 dnl              [lua_createtable], [LUA], [$1])
 dnl SC_CHECK_BLAS_LAPACK([$1])
