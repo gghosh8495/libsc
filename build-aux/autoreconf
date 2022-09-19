@@ -416,6 +416,10 @@ sub autoreconf_current_directory ()
 	  if (/^ACLOCAL_[A-Z_]*FLAGS\s*=\s*(.*)/)
 	    {
 	      $aclocal_flags = $1;
+
+              # remove any configure variables such as @VARIABLE_NAME@
+              $aclocal_flags =~ s/@\w+@//g;
+
 	      last;
 	    }
 	}
