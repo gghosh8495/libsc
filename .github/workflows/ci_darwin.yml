@@ -57,7 +57,7 @@ jobs:
        run: |
           DIR="checkDebugMPICXX" && mkdir -p "$DIR" && cd "$DIR"
           ../configure --enable-debug --enable-mpi CC=mpicxx \
-            CFLAGS="-O0 -g -lz -Wall -Wextra -Wno-unused-parameter"
+            CFLAGS="-O0 -g -lz -Wall -Wextra -Wno-unused-parameter -Wunused-command-line-argument"
           make -j V=0
           make -j check V=0
           cd ..
