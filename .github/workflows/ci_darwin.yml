@@ -52,15 +52,6 @@ jobs:
           make -j check V=0
           cd ..
 
-     - name: Find location of zlib
-       shell: bash
-       run: |
-          CURR_DIR=$PWD
-          cd /
-          ls
-          ls usr
-          cd CURR_DIR
-
      - name: Make check with debug, MPI and C++ compiler
        shell: bash
        run: |
