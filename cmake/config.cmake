@@ -99,6 +99,14 @@ if(SC_HAVE_QSORT_R)
 endif()
 set(CMAKE_REQUIRED_DEFINITIONS)
 
+# Check for ljansson
+check_symbol_exists(json_integer jansson.h HAVE_JSON)
+if(HAVE_JSON)
+  check_prototype_definition(json_decref
+  "void json_decref(json_t * jt)"
+  "" "jansson.h" SC_HAVE_JSON)
+endif()
+
 check_symbol_exists(fabs math.h SC_HAVE_FABS)
 
 check_include_file(signal.h SC_HAVE_SIGNAL_H)
