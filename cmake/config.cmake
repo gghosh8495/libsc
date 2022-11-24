@@ -103,7 +103,7 @@ set(CMAKE_REQUIRED_DEFINITIONS)
 check_include_file(jansson.h HAVE_JSON)
 if(HAVE_JSON)
   check_prototype_definition(json_decref
-  "void json_decref(json_t * jt)"
+  "static JSON_INLINE void json_decref(json_t **json)"
   "" "jansson.h" SC_HAVE_JSON)
 endif()
 
