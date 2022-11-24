@@ -100,7 +100,7 @@ endif()
 set(CMAKE_REQUIRED_DEFINITIONS)
 
 # Check for ljansson
-check_symbol_exists(json_integer jansson.h HAVE_JSON)
+check_include_file(jansson.h HAVE_JSON)
 if(HAVE_JSON)
   check_prototype_definition(json_decref
   "void json_decref(json_t * jt)"
