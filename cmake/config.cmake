@@ -102,7 +102,9 @@ set(CMAKE_REQUIRED_DEFINITIONS)
 # Check for ljansson
 check_include_file(jansson.h HAVE_JSON)
 if(HAVE_JSON)
-  check_symbol_exists(json_decref jansson.h SC_HAVE_JSON)
+  check_prototype_definition(json_array_size
+  "size_t json_array_size(const json_t *array)"
+  "NULL" "jansson.h" SC_HAVE_JSON)
 endif()
 
 check_symbol_exists(fabs math.h SC_HAVE_FABS)
