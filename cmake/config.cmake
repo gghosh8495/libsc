@@ -102,8 +102,8 @@ set(CMAKE_REQUIRED_DEFINITIONS)
 # Check for ljansson
 check_include_file(jansson.h HAVE_JSON)
 if(HAVE_JSON)
-  check_prototype_definition(json_array_size
-  "size_t json_array_size(const json_t *array)"
+  check_prototype_definition(json_equal
+  "int json_equal(const json_t *value1, const json_t *value2);"
   "NULL" "jansson.h" SC_HAVE_JSON)
 endif()
 
