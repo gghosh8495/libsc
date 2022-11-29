@@ -169,6 +169,15 @@ for (; sqrt (a) < a; a *= 1.000023) { putc ('1', stdout); }
   [AC_MSG_ERROR([unable to link with sqrt, cos, sin, both as is and with -lm])])
 ])
 
+dnl SC_CHECK_ZLIB_HEADER
+dnl Check whether zlib.h header file is found.
+dnl We AC_DEFINE HAVE_ZLIB_H to 1 depending on whether it is found.
+dnl
+AC_DEFUN([SC_CHECK_ZLIB_HEADER],
+[
+  AC_CHECK_HEADER([zlib.h],[AC_DEFINE([HAVE_ZLIB_H], [1], [Define to 1 if zlib.h header file is found.])])
+])
+
 dnl SC_CHECK_ZLIB(PREFIX)
 dnl Check whether adler32_combine is found, possibly in -lz, using a link test.
 dnl We AC_DEFINE HAVE_ZLIB to 1 depending on whether it is found.
@@ -185,6 +194,15 @@ if (a == adler32_combine (a, b, len)) {;}
   [AC_DEFINE([HAVE_ZLIB], [1], [Define to 1 if zlib's adler32_combine links])
    $1_HAVE_ZLIB="yes"],
   [$1_HAVE_ZLIB=])
+])
+
+dnl SC_CHECK_JSON_HEADER
+dnl Check whether jansson.h header file is found.
+dnl We AC_DEFINE HAVE_JSON_H to 1 depending on whether it is found.
+dnl
+AC_DEFUN([SC_CHECK_JSON_HEADER],
+[
+  AC_CHECK_HEADER([jansson.h],[AC_DEFINE([HAVE_JSON_H], [1], [Define to 1 if jansson.h header file is found.])])
 ])
 
 dnl SC_CHECK_JSON(PREFIX)
@@ -378,7 +396,9 @@ AC_DEFUN([SC_CHECK_LIBRARIES],
 AC_DEFINE([USING_AUTOCONF], 1, [Define to 1 if using autoconf build])
 AC_CHECK_PROG([$1_HAVE_DOT], [dot], [YES], [NO])
 SC_CHECK_MATH([$1])
+SC_CHECK_ZLIB_HEADER
 SC_CHECK_ZLIB([$1])
+SC_CHECK_JSON_HEADER
 SC_CHECK_JSON([$1])
 dnl SC_CHECK_LIB([lua53 lua5.3 lua52 lua5.2 lua51 lua5.1 lua5 lua],
 dnl              [lua_createtable], [LUA], [$1])
