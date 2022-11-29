@@ -99,6 +99,10 @@ if(SC_HAVE_QSORT_R)
 endif()
 set(CMAKE_REQUIRED_DEFINITIONS)
 
+# Check for ljansson
+check_include_file(jansson.h SC_HAVE_JSON_H)
+check_symbol_exists(json_integer math.h SC_HAVE_JSON_H)
+
 check_symbol_exists(fabs math.h SC_HAVE_FABS)
 
 check_include_file(signal.h SC_HAVE_SIGNAL_H)
@@ -146,6 +150,8 @@ if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
   endif()
 endif()
 
+# Check if zlib.h file is found.
+check_include_file(zlib.h SC_HAVE_ZLIB_H)
 if(ZLIB_FOUND)
   set(CMAKE_REQUIRED_LIBRARIES ZLIB::ZLIB)
   check_symbol_exists(adler32_combine zlib.h SC_HAVE_ZLIB)
