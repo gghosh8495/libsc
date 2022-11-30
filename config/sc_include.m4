@@ -176,7 +176,6 @@ dnl We set the shell variable PREFIX_HAVE_ZLIB to yes if found.
 dnl
 AC_DEFUN([SC_CHECK_ZLIB],
 [
-dnl  AC_CHECK_HEADER([zlib.h])
   SC_SEARCH_LIBS([adler32_combine], [[#include <zlib.h>]],
 [[
 z_off_t len = 3000;
@@ -195,7 +194,6 @@ dnl We set the shell variable PREFIX_HAVE_JSON to yes if found.
 dnl
 AC_DEFUN([SC_CHECK_JSON],
 [
-dnl  AC_CHECK_HEADER([jansson.h])
   SC_SEARCH_LIBS([json_integer], [[#include <jansson.h>]],
 [[
 json_t *jint, *jreal;
@@ -380,9 +378,7 @@ AC_DEFUN([SC_CHECK_LIBRARIES],
 AC_DEFINE([USING_AUTOCONF], 1, [Define to 1 if using autoconf build])
 AC_CHECK_PROG([$1_HAVE_DOT], [dot], [YES], [NO])
 SC_CHECK_MATH([$1])
-SC_CHECK_ZLIB_HEADER
 SC_CHECK_ZLIB([$1])
-SC_CHECK_JSON_HEADER
 SC_CHECK_JSON([$1])
 dnl SC_CHECK_LIB([lua53 lua5.3 lua52 lua5.2 lua51 lua5.1 lua5 lua],
 dnl              [lua_createtable], [LUA], [$1])
