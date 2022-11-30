@@ -101,7 +101,7 @@ set(CMAKE_REQUIRED_DEFINITIONS)
 
 # Check for ljansson
 check_include_file(jansson.h SC_HAVE_JSON_H)
-check_symbol_exists(json_integer jansson.h SC_HAVE_JSON_INTEGER)
+check_symbol_exists(json_real jansson.h SC_HAVE_JSON_REAL)
 
 check_symbol_exists(fabs math.h SC_HAVE_FABS)
 
