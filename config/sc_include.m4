@@ -169,15 +169,6 @@ for (; sqrt (a) < a; a *= 1.000023) { putc ('1', stdout); }
   [AC_MSG_ERROR([unable to link with sqrt, cos, sin, both as is and with -lm])])
 ])
 
-dnl SC_CHECK_ZLIB_HEADER
-dnl Check whether zlib.h header file is found.
-dnl We AC_DEFINE HAVE_ZLIB_H to 1 depending on whether it is found.
-dnl
-AC_DEFUN([SC_CHECK_ZLIB_HEADER],
-[
-  AC_CHECK_HEADER([zlib.h],[AC_DEFINE([HAVE_ZLIB_H], [1], [Define to 1 if zlib.h header file is found.])])
-])
-
 dnl SC_CHECK_ZLIB(PREFIX)
 dnl Check whether adler32_combine is found, possibly in -lz, using a link test.
 dnl We AC_DEFINE HAVE_ZLIB to 1 depending on whether it is found.
@@ -185,6 +176,7 @@ dnl We set the shell variable PREFIX_HAVE_ZLIB to yes if found.
 dnl
 AC_DEFUN([SC_CHECK_ZLIB],
 [
+  AC_CHECK_HEADER([zlib.h])
   SC_SEARCH_LIBS([adler32_combine], [[#include <zlib.h>]],
 [[
 z_off_t len = 3000;
@@ -196,15 +188,6 @@ if (a == adler32_combine (a, b, len)) {;}
   [$1_HAVE_ZLIB=])
 ])
 
-dnl SC_CHECK_JSON_HEADER
-dnl Check whether jansson.h header file is found.
-dnl We AC_DEFINE HAVE_JSON_H to 1 depending on whether it is found.
-dnl
-AC_DEFUN([SC_CHECK_JSON_HEADER],
-[
-  AC_CHECK_HEADER([jansson.h],[AC_DEFINE([HAVE_JSON_H], [1], [Define to 1 if jansson.h header file is found.])])
-])
-
 dnl SC_CHECK_JSON(PREFIX)
 dnl Check whether json_integer, json_real are found (in -ljansson).
 dnl We AC_DEFINE HAVE_JSON to 1 depending on whether it is found.
@@ -212,6 +195,7 @@ dnl We set the shell variable PREFIX_HAVE_JSON to yes if found.
 dnl
 AC_DEFUN([SC_CHECK_JSON],
 [
+  AC_CHECK_HEADER([jansson.h])
   SC_SEARCH_LIBS([json_integer], [[#include <jansson.h>]],
 [[
 json_t *jint, *jreal;
