@@ -176,7 +176,7 @@ dnl We set the shell variable PREFIX_HAVE_ZLIB to yes if found.
 dnl
 AC_DEFUN([SC_CHECK_ZLIB],
 [
-  AC_CHECK_HEADER([zlib.h])
+dnl  AC_CHECK_HEADER([zlib.h])
   SC_SEARCH_LIBS([adler32_combine], [[#include <zlib.h>]],
 [[
 z_off_t len = 3000;
@@ -195,7 +195,7 @@ dnl We set the shell variable PREFIX_HAVE_JSON to yes if found.
 dnl
 AC_DEFUN([SC_CHECK_JSON],
 [
-  AC_CHECK_HEADER([jansson.h])
+dnl  AC_CHECK_HEADER([jansson.h])
   SC_SEARCH_LIBS([json_integer], [[#include <jansson.h>]],
 [[
 json_t *jint, *jreal;
