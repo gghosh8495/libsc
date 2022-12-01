@@ -101,7 +101,9 @@ set(CMAKE_REQUIRED_DEFINITIONS)
 
 # Check for ljansson
 check_include_file(jansson.h SC_HAVE_JSON_H)
-check_symbol_exists(json_equal jansson.h SC_HAVE_JSON_EQUAL)
+check_prototype_definition(json_equal
+"int json_equal(const json_t *value1, const json_t *value2)"
+"NULL" "jansson.h" SC_HAVE_JSON)
 
 check_symbol_exists(fabs math.h SC_HAVE_FABS)
 
