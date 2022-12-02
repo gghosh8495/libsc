@@ -113,10 +113,8 @@ jobs:
 
     - name: Manual install jansson
       run: |
-          curl -o jansson-2.13.tar.gz 'http://www.digip.org/jansson/releases/jansson-2.13.tar.gz'
-          tar -xzf jansson-2.13.tar.gz -C $PWD
+          git clone https://github.com/akheron/jansson.git
           ls -l
-          ls ..
 
     - name: CMake configure
       run: cmake -B build -Dmpi=yes --install-prefix=${{ runner.temp }} -DBUILD_SHARED_LIBS:BOOL=${{ matrix.shared }}
