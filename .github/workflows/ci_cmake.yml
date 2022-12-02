@@ -109,21 +109,7 @@ jobs:
       name: Checkout source code
 
     - name: Install system dependencies
-      run: brew install open-mpi ninja automake
-
-    - name: Manual install jansson
-      shell: bash
-      run: |
-          DIR=$PWD
-          cd ..
-          git clone https://github.com/akheron/jansson.git
-          cd jansson
-          git checkout 2.13
-          autoreconf -i
-          ./configure
-          make
-          make install
-          cd $DIR
+      run: brew install jansson open-mpi
 
     - name: CMake configure
       run: cmake -B build -Dmpi=yes --install-prefix=${{ runner.temp }} -DBUILD_SHARED_LIBS:BOOL=${{ matrix.shared }}
