@@ -109,7 +109,7 @@ jobs:
       name: Checkout source code
 
     - name: Install system dependencies
-      run: brew install open-mpi curl
+      run: brew install open-mpi ninja automake
 
     - name: Manual install jansson
       shell: bash
@@ -119,8 +119,9 @@ jobs:
           git clone https://github.com/akheron/jansson.git
           cd jansson
           git checkout 2.13
-          cmake .
-          make -j2
+          autoreconf -i
+          ./configure
+          make
           make install
           cd $DIR
 
