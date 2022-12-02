@@ -115,7 +115,6 @@ jobs:
       run: |
           curl -o jansson-2.13.tar.gz 'http://www.digip.org/jansson/releases/jansson-2.13.tar.gz'
           tar -xf jansson-2.13.tar.gz
-          cd jansson-2.13
           ls -l
 
     - name: CMake configure
