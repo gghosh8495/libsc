@@ -116,6 +116,7 @@ jobs:
           curl -o jansson-2.13.tar.gz 'http://www.digip.org/jansson/releases/jansson-2.13.tar.gz'
           tar -xzf jansson-2.13.tar.gz -C $PWD
           ls -l
+          ls ..
 
     - name: CMake configure
       run: cmake -B build -Dmpi=yes --install-prefix=${{ runner.temp }} -DBUILD_SHARED_LIBS:BOOL=${{ matrix.shared }}
