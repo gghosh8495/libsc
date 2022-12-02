@@ -109,7 +109,11 @@ jobs:
       name: Checkout source code
 
     - name: Install system dependencies
-      run: brew install open-mpi jansson
+      run: brew install open-mpi libcurl
+
+    - name: Manual install jansson
+      run: curl -o jansson-2.13.tar.gz 'http://www.digip.org/jansson/releases/jansson-2.13.tar.gz'
+           pwd
 
     - name: CMake configure
       run: cmake -B build -Dmpi=yes --install-prefix=${{ runner.temp }} -DBUILD_SHARED_LIBS:BOOL=${{ matrix.shared }}
