@@ -112,9 +112,17 @@ jobs:
       run: brew install open-mpi curl
 
     - name: Manual install jansson
+      shell: bash
       run: |
+          DIR=$PWD
+          cd ..
           git clone https://github.com/akheron/jansson.git
-          ls -l
+          cd jansson
+          git checkout 2.13
+          cmake .
+          make -j2
+          make install
+          cd $DIR
 
     - name: CMake configure
       run: cmake -B build -Dmpi=yes --install-prefix=${{ runner.temp }} -DBUILD_SHARED_LIBS:BOOL=${{ matrix.shared }}
